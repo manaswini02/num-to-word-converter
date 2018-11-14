@@ -42,7 +42,7 @@ public class ConverterImpl implements Converter {
 		}
 		int x2 = n % 100;
 
-		if (n / 100 > 0 && x2 % 10 > 0) {
+		if (n / 100 > 0 && x2 > 0) {
 			sb.append(" and");
 		}
 		if (x2 > 19) {
