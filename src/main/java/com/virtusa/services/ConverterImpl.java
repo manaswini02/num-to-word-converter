@@ -3,8 +3,8 @@ package com.virtusa.services;
 /**
  * @Author Manaswini Nalamuthu
  *
- *         ConverterImpl class considers group of 3 digits from units place and
- *         gives equivalent English word
+ *  ConverterImpl class considers group of 3 digits from units place and
+ *  gives equivalent English word
  *
  */
 public class ConverterImpl implements Converter {

@@ -1,5 +1,11 @@
 package com.virtusa.exception;
 
+/**
+ * @Author Manaswini Nalamuthu
+ *
+ * customized exception class to handle invalid data.
+ * 
+ */
 public class InvalidDataException extends Exception{
 	/**
 	 * 

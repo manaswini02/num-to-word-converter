@@ -2,6 +2,12 @@ package com.virtusa.validation;
 
 import com.virtusa.exception.InvalidDataException;
 
+/**
+ * @Author Manaswini Nalamuthu
+ *
+ *  UserInput class validates input data
+ *  
+ */
 public class UserInput {
 	
 	private String inputData;
