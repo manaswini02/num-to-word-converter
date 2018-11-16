@@ -2,46 +2,43 @@ package com.virtusa.validation;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.virtusa.exception.InvalidDataException;
 
 public class UserInputTest {
 
-	UserInput userInput;
+	UserInputImpl userInput;
 
-	@BeforeClass
-	public static void setUp() {
+	@Before
+	public void setUp() {
+		userInput = new UserInputImpl();
 	}
 
 	@Test
 	public void valid_integer_test() throws Exception {
-		userInput = new UserInput("54546");
-		assertEquals(54546, userInput.validate());
+
+		assertEquals(54546, userInput.validate("54546"));
 	}
 
 	@Test(expected = InvalidDataException.class)
 	public void invalid_integer_test() throws Exception {
-		userInput = new UserInput("string");
-		userInput.validate();
+		userInput.validate("string");
 	}
-	
+
 	@Test(expected = InvalidDataException.class)
 	public void invalid_integer_test2() throws Exception {
-		userInput = new UserInput("@%$$&*");
-		userInput.validate();
+		userInput.validate("@%$$&*");
 	}
 
 	@Test(expected = RuntimeException.class)
 	public void out_of_range_integer_test() throws Exception {
-		userInput = new UserInput("-546");
-		userInput.validate();
+		userInput.validate("-546");
 	}
 
 	@Test(expected = RuntimeException.class)
 	public void out_of_range_integer_test2() throws Exception {
-		userInput = new UserInput("1245963698");
-		userInput.validate();
+		userInput.validate("1245963698");
 	}
 }

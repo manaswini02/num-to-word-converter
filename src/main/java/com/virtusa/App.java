@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.virtusa.exception.InvalidDataException;
 import com.virtusa.services.ConverterImpl;
-import com.virtusa.validation.UserInput;
+import com.virtusa.validation.UserInputImpl;
 
 /**
  * @Author Manaswini Nalamuthu
@@ -18,16 +18,16 @@ public class App {
 	public static void main(String[] args) throws InvalidDataException {
 
 		ConverterImpl converter = new ConverterImpl();
-
+		UserInputImpl input = new UserInputImpl();
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter number to get equivalent English word : ");
 
 		while (scanner.hasNext()) {
 			
 			String data = scanner.nextLine();
-			UserInput input = new UserInput(data);
 			// validate input
-			int number = input.validate();
+			int number = input.validate(data);
 
 			// convert number to word
 			String word = converter.convertToWord(number);

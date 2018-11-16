@@ -3,8 +3,8 @@ package com.virtusa.services;
 /**
  * @Author Manaswini Nalamuthu
  *
- *  ConverterImpl class considers group of 3 digits from units place and
- *  gives equivalent English word
+ *         ConverterImpl class considers group of 3 digits from units place and
+ *         gives equivalent English word
  *
  */
 public class ConverterImpl implements Converter {
@@ -20,15 +20,20 @@ public class ConverterImpl implements Converter {
 
 	public String convertToWord(int number) {
 		sb = new StringBuilder();
-		// first three digits equivalent
-		formWord(number / 1000000, " million");
 
-		// next three digits equivalent
-		formWord((number % 1000000) / 1000, " thousand");
+		if (number == 0) {
+			sb.append("zero");
 
-		// last three digits equivalent
-		formWord((number % 1000) % 1000, "");
+		} else {
+			// first three digits equivalent
+			formWord(number / 1000000, " million");
 
+			// next three digits equivalent
+			formWord((number % 1000000) / 1000, " thousand");
+
+			// last three digits equivalent
+			formWord((number % 1000) % 1000, "");
+		}
 		return sb.toString().trim();
 	}
 
@@ -42,7 +47,7 @@ public class ConverterImpl implements Converter {
 		}
 		int x2 = n % 100;
 
-		if (n / 100 > 0 && x2 > 0) {
+		if (sb.length()>0 && x2 > 0) {
 			sb.append(" and");
 		}
 		if (x2 > 19) {
