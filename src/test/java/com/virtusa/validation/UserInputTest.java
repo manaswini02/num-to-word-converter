@@ -17,28 +17,34 @@ public class UserInputTest {
 	}
 
 	@Test
-	public void valid_integer_test() throws Exception {
+	public void validIntegerTest() throws Exception {
 
 		assertEquals(54546, userInput.validate("54546"));
 	}
+	
+	@Test
+	public void zeroScenarioTest() throws Exception {
+
+		assertEquals(0, userInput.validate("0"));
+	}
 
 	@Test(expected = InvalidDataException.class)
-	public void invalid_integer_test() throws Exception {
+	public void stringInputTest() throws Exception {
 		userInput.validate("string");
 	}
 
 	@Test(expected = InvalidDataException.class)
-	public void invalid_integer_test2() throws Exception {
+	public void specialKeysTest() throws Exception {
 		userInput.validate("@%$$&*");
 	}
 
 	@Test(expected = RuntimeException.class)
-	public void out_of_range_integer_test() throws Exception {
+	public void negativeValueTest() throws Exception {
 		userInput.validate("-546");
 	}
 
 	@Test(expected = RuntimeException.class)
-	public void out_of_range_integer_test2() throws Exception {
+	public void outOfRangeTest() throws Exception {
 		userInput.validate("1245963698");
 	}
 }

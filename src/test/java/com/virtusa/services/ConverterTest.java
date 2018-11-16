@@ -16,7 +16,8 @@ public class ConverterTest {
 			}
 	
 	@Test
-	public void valid_scenarios_test()  {
+	public void validScenariosTest()  {
+		assertEquals("zero",converter.convertToWord(0));
 		assertEquals("one",converter.convertToWord(1));
 		assertEquals("fifteen",converter.convertToWord(15));
 		assertEquals("thirty one",converter.convertToWord(31));
