@@ -1,10 +1,12 @@
-package com.virtusa;
+package com.manaswini.virtusa;
 
 import java.util.Scanner;
 
-import com.virtusa.exception.InvalidDataException;
-import com.virtusa.services.ConverterImpl;
-import com.virtusa.validation.UserInputImpl;
+import com.manaswini.virtusa.exception.InvalidDataException;
+import com.manaswini.virtusa.services.Converter;
+import com.manaswini.virtusa.services.ConverterImpl;
+import com.manaswini.virtusa.validation.UserInput;
+import com.manaswini.virtusa.validation.UserInputImpl;
 
 /**
  * @Author Manaswini Nalamuthu
@@ -17,8 +19,8 @@ public class App {
 
 	public static void main(String[] args) throws InvalidDataException {
 
-		ConverterImpl converter = new ConverterImpl();
-		UserInputImpl input = new UserInputImpl();
+		final Converter converter = new ConverterImpl();
+		final UserInput input = new UserInputImpl();
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter number to get equivalent English word : ");

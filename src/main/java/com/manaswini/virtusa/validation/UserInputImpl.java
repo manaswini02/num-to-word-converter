@@ -1,6 +1,6 @@
-package com.virtusa.validation;
+package com.manaswini.virtusa.validation;
 
-import com.virtusa.exception.InvalidDataException;
+import com.manaswini.virtusa.exception.InvalidDataException;
 
 /**
  * @Author Manaswini Nalamuthu

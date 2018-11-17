@@ -1,11 +1,12 @@
-package com.virtusa.validation;
+package com.manaswini.virtusa.validation;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.virtusa.exception.InvalidDataException;
+import com.manaswini.virtusa.exception.InvalidDataException;
+import com.manaswini.virtusa.validation.UserInputImpl;
 
 public class UserInputTest {
 

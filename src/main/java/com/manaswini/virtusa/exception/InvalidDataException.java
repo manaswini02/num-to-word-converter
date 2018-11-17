@@ -1,4 +1,4 @@
-package com.virtusa.exception;
+package com.manaswini.virtusa.exception;
 
 /**
  * @Author Manaswini Nalamuthu
