@@ -6,13 +6,11 @@ import com.manaswini.virtusa.util.ConverterHelper;
 /**
  * @Author Manaswini Nalamuthu
  *
- *         ConverterImpl class splits input to group of 3 digits from units place and
- *         gives equivalent English word
+ *         ConverterImpl class splits input to group of 3 digits from units
+ *         place and gives equivalent English word
  *
  */
 public class ConverterImpl implements Converter {
-
-	private final ConverterHelper helper = new ConverterHelper();
 
 	public String convertToWord(int number) throws InvalidDataException {
 		StringBuilder englishWord = new StringBuilder();
@@ -36,17 +34,17 @@ public class ConverterImpl implements Converter {
 	public String formThreeDigitEquiWord(int num, int place, StringBuilder englishWord) throws InvalidDataException {
 		StringBuilder threeDigitEquiWord = new StringBuilder();
 		String hundredthPlaceWord;
-		
+
 		try {
 			hundredthPlaceWord = formHundredthPlaceWord(num);
 			if (hundredthPlaceWord.length() > 0) {
 				threeDigitEquiWord.append(hundredthPlaceWord);
-				threeDigitEquiWord.append(helper.appendAND(num % 100, englishWord, threeDigitEquiWord));
+				threeDigitEquiWord.append(ConverterHelper.appendAND(num % 100, englishWord, threeDigitEquiWord));
 			}
 			threeDigitEquiWord.append(formUnitsTensDigitsWord(num % 100));
 			if (threeDigitEquiWord.length() > 0) {
 
-				threeDigitEquiWord.append(helper.higherPlace[place]);
+				threeDigitEquiWord.append(ConverterHelper.higherPlace[place]);
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			throw new InvalidDataException("Input should be less than 1000");
@@ -59,10 +57,10 @@ public class ConverterImpl implements Converter {
 
 		int x = n / 100;
 		if (n > 19) {
-			threeDigitWord.append(helper.units[x]);
+			threeDigitWord.append(ConverterHelper.units[x]);
 		}
 		if (x > 0) {
-			threeDigitWord.append(helper.higherPlace[2]);
+			threeDigitWord.append(ConverterHelper.higherPlace[2]);
 		}
 
 		return threeDigitWord.toString();
@@ -73,9 +71,9 @@ public class ConverterImpl implements Converter {
 		StringBuilder lastTwoDigitsWords = new StringBuilder();
 		try {
 			if (n > 19) {
-				lastTwoDigitsWords.append(helper.tens[n / 10] + helper.units[(n % 10)]);
+				lastTwoDigitsWords.append(ConverterHelper.tens[n / 10] + ConverterHelper.units[(n % 10)]);
 			} else {
-				lastTwoDigitsWords.append(helper.units[n]);
+				lastTwoDigitsWords.append(ConverterHelper.units[n]);
 			}
 
 		} catch (ArrayIndexOutOfBoundsException e) {
