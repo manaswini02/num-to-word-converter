@@ -12,6 +12,12 @@ import com.manaswini.virtusa.util.ConverterHelper;
  */
 public class ConverterImpl implements Converter {
 
+	public static final int  millionsPlace = 1000000;
+	public static final int  thousandsPlace = 1000;
+	public static final int  hundredsPlace = 100;
+	public static final int  unitsPlace = 19;
+	public static final int  tensPlace = 10;
+
 	public String convertToWord(int number) throws InvalidDataException {
 		StringBuilder englishWord = new StringBuilder();
 
@@ -20,13 +26,13 @@ public class ConverterImpl implements Converter {
 
 		} else {
 			// first three digits equivalent
-			englishWord.append(formThreeDigitEquiWord(number / 1000000, 0, englishWord));
+			englishWord.append(formThreeDigitEquiWord(number / millionsPlace, 0, englishWord));
 
 			// next three digits equivalent
-			englishWord.append(formThreeDigitEquiWord((number % 1000000) / 1000, 1, englishWord));
+			englishWord.append(formThreeDigitEquiWord((number % millionsPlace) / thousandsPlace, 1, englishWord));
 
 			// last three digits equivalent
-			englishWord.append(formThreeDigitEquiWord((number % 1000) % 1000, 3, englishWord));
+			englishWord.append(formThreeDigitEquiWord((number % thousandsPlace) % thousandsPlace, 3, englishWord));
 		}
 		return englishWord.toString().trim();
 	}
@@ -39,9 +45,9 @@ public class ConverterImpl implements Converter {
 			hundredthPlaceWord = formHundredthPlaceWord(num);
 			if (hundredthPlaceWord.length() > 0) {
 				threeDigitEquiWord.append(hundredthPlaceWord);
-				threeDigitEquiWord.append(ConverterHelper.appendAND(num % 100, englishWord, threeDigitEquiWord));
+				threeDigitEquiWord.append(ConverterHelper.appendAND(num % hundredsPlace, englishWord, threeDigitEquiWord));
 			}
-			threeDigitEquiWord.append(formUnitsTensDigitsWord(num % 100));
+			threeDigitEquiWord.append(formUnitsTensDigitsWord(num % hundredsPlace));
 			if (threeDigitEquiWord.length() > 0) {
 
 				threeDigitEquiWord.append(ConverterHelper.higherPlace[place]);
@@ -55,8 +61,8 @@ public class ConverterImpl implements Converter {
 	public String formHundredthPlaceWord(int n) {
 		StringBuilder threeDigitWord = new StringBuilder();
 
-		int x = n / 100;
-		if (n > 19) {
+		int x = n / hundredsPlace;
+		if (n > unitsPlace) {
 			threeDigitWord.append(ConverterHelper.units[x]);
 		}
 		if (x > 0) {
@@ -70,8 +76,8 @@ public class ConverterImpl implements Converter {
 	public String formUnitsTensDigitsWord(int n) throws InvalidDataException {
 		StringBuilder lastTwoDigitsWords = new StringBuilder();
 		try {
-			if (n > 19) {
-				lastTwoDigitsWords.append(ConverterHelper.tens[n / 10] + ConverterHelper.units[(n % 10)]);
+			if (n > unitsPlace) {
+				lastTwoDigitsWords.append(ConverterHelper.tens[n / tensPlace] + ConverterHelper.units[(n % tensPlace)]);
 			} else {
 				lastTwoDigitsWords.append(ConverterHelper.units[n]);
 			}
